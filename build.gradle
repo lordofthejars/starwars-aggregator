@@ -1,0 +1,36 @@
+// Apply the java plugin to add support for Java
+apply plugin: 'war'
+
+allprojects {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    group = 'org.starwars.aggregator'
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+dependencies {
+    providedCompile 'javax:javaee-api:7.0'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+project(':consumer-test') {
+    apply plugin: 'java'
+    dependencies {
+        testCompile rootProject
+        testCompile("au.com.dius:pact-jvm-consumer-junit_2.11:3.2.4")
+        testCompile 'org.apache.cxf:cxf-rt-rs-client:3.1.4'
+        testCompile 'org.apache.johnzon:johnzon-jaxrs:0.9.2-incubating'
+    }
+    test {
+        println buildDir
+        systemProperties['pact.rootDir'] = "$buildDir/pacts"
+    }
+}
