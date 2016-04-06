@@ -25,7 +25,7 @@ project(':consumer-test') {
     apply plugin: 'java'
     dependencies {
         testCompile rootProject
-        testCompile("au.com.dius:pact-jvm-consumer-junit_2.11:3.2.4")
+        testCompile("au.com.dius:pact-jvm-consumer-junit_2.11:3.2.6")
         testCompile 'org.apache.cxf:cxf-rt-rs-client:3.1.4'
         testCompile 'org.apache.johnzon:johnzon-jaxrs:0.9.2-incubating'
     }

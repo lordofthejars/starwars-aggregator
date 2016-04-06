@@ -46,7 +46,7 @@ public class ConsumerPlanetsTest {
                 .willRespondWith()
                     .status(200)
                     .headers(headersText)
-                    .body("1298.3")
+                    .body(PactDslJsonRootValue.stringType("1298.3"))
                 .uponReceiving("Planets with biggest orbital period")
                     .path("/rest/planet/orbital/biggest")
                     .method("GET")
